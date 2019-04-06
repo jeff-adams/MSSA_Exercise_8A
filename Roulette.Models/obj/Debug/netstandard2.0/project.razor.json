@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "/Users/jeff/Projects/MSSA/Exercises/MSSA_Exercise_8C/Roulette.Models/Roulette.Models.csproj",
+  "TargetFramework": "netstandard2.0",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
