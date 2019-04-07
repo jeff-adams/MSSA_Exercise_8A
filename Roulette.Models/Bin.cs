@@ -2,7 +2,7 @@ using System;
 
 namespace Roulette.Models
 {
-    internal struct Bin
+    public struct Bin
     {
         public int Number { get; }
         public ConsoleColor Color { get; }

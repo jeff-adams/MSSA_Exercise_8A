@@ -4,10 +4,11 @@ namespace Roulette.Models
 {
     public class Wheel
     {
-        internal Bin[] RouletteWheel { get; private set;}
+        public Bin[] RouletteWheel { get; private set;}
 
         public Wheel()
         {
+            RouletteWheel = new Bin[38];
             CreateRouletteWheel();
         }
 
