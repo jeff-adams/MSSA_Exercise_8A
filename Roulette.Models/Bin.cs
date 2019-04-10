@@ -2,15 +2,15 @@ using System;
 
 namespace Roulette.Models
 {
-    internal class Bin
+    public class Bin
     {
-        internal int Number { get; private set;}
-        internal ConsoleColor Color { get; private set;}
-        internal bool? IsEven { get; private set;}
-        internal bool? IsLow { get; private set;}
-        internal int Dozen { get; private set;}
-        internal int Column { get; private set;}
-        internal int Street { get; private set;} 
+        public int Number { get; private set;}
+        public ConsoleColor Color { get; private set;}
+        public bool? IsEven { get; private set;}
+        public bool? IsLow { get; private set;}
+        public int Dozen { get; private set;}
+        public int Column { get; private set;}
+        public int Street { get; private set;} 
 
         public Bin(int number)
         {

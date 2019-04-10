@@ -2,9 +2,9 @@ using System;
 
 namespace Roulette.Models
 {
-    class Roulette
+    public class Roulette
     {
-        internal Bin[] Wheel { get; private set;}
+        public Bin[] Wheel { get; private set;}
 
         public Roulette()
         {
