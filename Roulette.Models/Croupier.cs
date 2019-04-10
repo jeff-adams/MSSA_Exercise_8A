@@ -24,7 +24,5 @@ namespace Roulette.Models
         {
             winningBin = roulette.Wheel[new Random(seed).Next(0,38)];
         }
-
-
     }
 }
