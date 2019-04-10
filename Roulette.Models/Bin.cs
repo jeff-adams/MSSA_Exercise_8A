@@ -2,16 +2,17 @@ using System;
 
 namespace Roulette.Models
 {
-    public class Bin
+    internal class Bin
     {
-        public int Number { get; private set;}
-        public ConsoleColor Color { get; private set;}
-        public bool? IsEven { get; private set;}
-        public bool? IsLow { get; private set;}
-        public TriState Dozen { get; private set;}
-        public TriState Column { get; private set;}
+        internal int Number { get; private set;}
+        internal ConsoleColor Color { get; private set;}
+        internal bool? IsEven { get; private set;}
+        internal bool? IsLow { get; private set;}
+        internal int Dozen { get; private set;}
+        internal int Column { get; private set;}
+        internal int Street { get; private set;} 
 
-        public Bin(int number, ConsoleColor color)
+        public Bin(int number)
         {
             Number = number;
             SetColor();
@@ -21,6 +22,7 @@ namespace Roulette.Models
                 IsLow = number < 19;
                 SetDozen();
                 SetColumn();
+                SetStreet();
             }
         }
 
@@ -60,16 +62,27 @@ namespace Roulette.Models
         {
             switch (Number)
             {
-                case int i when i > 0 && i <= 12:
-                    Dozen = TriState.First;
+                case int i when i >= 1 && i <= 12:
+                    Dozen = 1;
                     break;
                 case int i when i >= 13 && i <= 24:
-                    Dozen = TriState.Second;
+                    Dozen = 2;
                     break;
-                case int i when i >= 25 && i <= 37:
-                    Dozen = TriState.Third;
+                case int i when i >= 25 && i <= 36:
+                    Dozen = 3;
                     break;
             }
+        }
+
+        private void SetColumn()
+        {
+            int columnValue = Number % 3;
+            Column = columnValue > 0 ? columnValue : 3;
+        }
+
+        private void SetStreet()
+        {
+            Street = ((Number - 1) / 3) + 1;
         }
     }
 }

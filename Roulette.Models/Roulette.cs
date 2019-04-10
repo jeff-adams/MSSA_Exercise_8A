@@ -18,42 +18,10 @@ namespace Roulette.Models
 
             for (int i = 0; i < Wheel.Length; i++)
             {
-                Bins[i] = CreateBin(i);
+                Bins[i] = new Bin(i);
             }
 
             OrderBinsOnAmericanWheel(Bins);
-        }
-
-        private Bin CreateBin(int binNumber)
-        {
-            var bin = new Bin();
-            var red = ConsoleColor.Red;
-            var black = ConsoleColor.Black;
-            var green = ConsoleColor.Green;
-
-            switch (binNumber)
-            {
-                case 0: 
-                    bin = new Bin(binNumber, green);
-                    break;
-                case int i when i >= 1 && i <=10:
-                    bin = i % 2 == 0 ? new Bin(i, black) : new Bin(i, red);
-                    break;
-                case int i when i >= 11 && i <=18:
-                    bin = i % 2 != 0 ? new Bin(i, black) : new Bin(i, red);
-                    break;
-                case int i when i >= 19 && i <=28:
-                    bin = i % 2 == 0 ? new Bin(i, black) : new Bin(i, red);
-                    break;
-                case int i when i >= 29 && i <=36:
-                    bin = i % 2 != 0 ? new Bin(i, black) : new Bin(i, red);
-                    break;
-                case 38:
-                    bin = new Bin(binNumber, green); 
-                    break;
-            }
-
-            return bin;
         }
 
         private void OrderBinsOnAmericanWheel(Bin[] bins)

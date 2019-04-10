@@ -13,13 +13,9 @@ namespace Roulette.Models
             roulette = new Roulette();
         }
 
-        private Bin SpinRouletteWheel() => roulette.Wheel[new Random().Next(0,37)];
-
-        private List<string> CreateWinningBets()
+        public void SpinRouletteWheel()
         {
-            var winningBets = new List<string>();
-
-            return winningBets;
+            winningBin = roulette.Wheel[new Random().Next(0,38)];
         }
 
     }
