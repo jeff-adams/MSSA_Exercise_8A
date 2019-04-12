@@ -5,65 +5,66 @@ namespace Roulette.Models
     public class Roulette
     {
         public Bin[] Wheel { get; private set;}
+        public Bin[] Table { get; private set;}
 
         public Roulette()
         {
             Wheel = new Bin[38];
+            Table = new Bin[38];
+            
             CreateRouletteWheel();
         }
 
         private void CreateRouletteWheel()
         {
-            var Bins = new Bin[38];
-
             for (int i = 0; i < Wheel.Length; i++)
             {
-                Bins[i] = new Bin(i);
+                Table[i] = new Bin(i);
             }
 
-            OrderBinsOnAmericanWheel(Bins);
+            OrderBinsOnAmericanWheel();
         }
 
-        private void OrderBinsOnAmericanWheel(Bin[] bins)
+        private void OrderBinsOnAmericanWheel()
         {
-            Wheel[0] = bins[0];
-            Wheel[1] = bins[28];
-            Wheel[2] = bins[9];
-            Wheel[3] = bins[26];
-            Wheel[4] = bins[30];
-            Wheel[5] = bins[11];
-            Wheel[6] = bins[7];
-            Wheel[7] = bins[20];
-            Wheel[8] = bins[32];
-            Wheel[9] = bins[17];
-            Wheel[10] = bins[5];
-            Wheel[11] = bins[22];
-            Wheel[12] = bins[34];
-            Wheel[13] = bins[15];
-            Wheel[14] = bins[3];
-            Wheel[15] = bins[24];
-            Wheel[16] = bins[36];
-            Wheel[17] = bins[13];
-            Wheel[18] = bins[1];
-            Wheel[19] = bins[3];
-            Wheel[20] = bins[27];
-            Wheel[21] = bins[10];
-            Wheel[22] = bins[25];
-            Wheel[23] = bins[29];
-            Wheel[24] = bins[12];
-            Wheel[25] = bins[8];
-            Wheel[26] = bins[19];
-            Wheel[27] = bins[31];
-            Wheel[28] = bins[18];
-            Wheel[29] = bins[6];
-            Wheel[30] = bins[21];
-            Wheel[31] = bins[33];
-            Wheel[32] = bins[16];
-            Wheel[33] = bins[4];
-            Wheel[34] = bins[23];
-            Wheel[35] = bins[35];
-            Wheel[36] = bins[14];
-            Wheel[37] = bins[2];
+            Wheel[0] = Table[0];
+            Wheel[1] = Table[28];
+            Wheel[2] = Table[9];
+            Wheel[3] = Table[26];
+            Wheel[4] = Table[30];
+            Wheel[5] = Table[11];
+            Wheel[6] = Table[7];
+            Wheel[7] = Table[20];
+            Wheel[8] = Table[32];
+            Wheel[9] = Table[17];
+            Wheel[10] = Table[5];
+            Wheel[11] = Table[22];
+            Wheel[12] = Table[34];
+            Wheel[13] = Table[15];
+            Wheel[14] = Table[3];
+            Wheel[15] = Table[24];
+            Wheel[16] = Table[36];
+            Wheel[17] = Table[13];
+            Wheel[18] = Table[1];
+            Wheel[19] = Table[3];
+            Wheel[20] = Table[27];
+            Wheel[21] = Table[10];
+            Wheel[22] = Table[25];
+            Wheel[23] = Table[29];
+            Wheel[24] = Table[12];
+            Wheel[25] = Table[8];
+            Wheel[26] = Table[19];
+            Wheel[27] = Table[31];
+            Wheel[28] = Table[18];
+            Wheel[29] = Table[6];
+            Wheel[30] = Table[21];
+            Wheel[31] = Table[33];
+            Wheel[32] = Table[16];
+            Wheel[33] = Table[4];
+            Wheel[34] = Table[23];
+            Wheel[35] = Table[35];
+            Wheel[36] = Table[14];
+            Wheel[37] = Table[2];
         }
     }
 }

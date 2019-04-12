@@ -18,19 +18,19 @@ namespace Roulette.Models
 
             if(winningBin.Street != 1)
             {
-                splits.Add(roulette.Wheel[winningBin.Number - 4]);
+                splits.Add(roulette.Table[winningBin.Number - 3]);
             }
             if(winningBin.Street != 12)
             {
-                splits.Add(roulette.Wheel[winningBin.Number + 4]);
+                splits.Add(roulette.Table[winningBin.Number + 3]);
             }
             if(winningBin.Column != 1)
             {
-                splits.Add(roulette.Wheel[winningBin.Number - 1]);
+                splits.Add(roulette.Table[winningBin.Number - 1]);
             }
             if(winningBin.Column != 3)
             {
-                splits.Add(roulette.Wheel[winningBin.Number + 1]);
+                splits.Add(roulette.Table[winningBin.Number + 1]);
             }
 
             return splits;
@@ -40,7 +40,7 @@ namespace Roulette.Models
         {
             var doubleStreets = new List<Bin>();
 
-            foreach (var bin in roulette.Wheel)
+            foreach (var bin in roulette.Table)
             {
                 if (winningBin.Street != 1)
                 {
@@ -95,10 +95,10 @@ namespace Roulette.Models
         {
             var corner = new List<Bin>();
 
-            corner.Add(roulette.Wheel[winningBin.Number - 3]);
-            corner.Add(roulette.Wheel[winningBin.Number - 2]);
+            corner.Add(roulette.Table[winningBin.Number - 3]);
+            corner.Add(roulette.Table[winningBin.Number - 2]);
             corner.Add(winningBin);
-            corner.Add(roulette.Wheel[winningBin.Number + 1]);
+            corner.Add(roulette.Table[winningBin.Number + 1]);
 
             return corner;
         }
@@ -108,9 +108,9 @@ namespace Roulette.Models
             var corner = new List<Bin>();
 
             corner.Add(winningBin);
-            corner.Add(roulette.Wheel[winningBin.Number + 1]);
-            corner.Add(roulette.Wheel[winningBin.Number + 3]);
-            corner.Add(roulette.Wheel[winningBin.Number + 4]);
+            corner.Add(roulette.Table[winningBin.Number + 1]);
+            corner.Add(roulette.Table[winningBin.Number + 3]);
+            corner.Add(roulette.Table[winningBin.Number + 4]);
 
             return corner;
         }
@@ -119,10 +119,10 @@ namespace Roulette.Models
         {
             var corner = new List<Bin>();
 
-            corner.Add(roulette.Wheel[winningBin.Number - 1]);
+            corner.Add(roulette.Table[winningBin.Number - 1]);
             corner.Add(winningBin);
-            corner.Add(roulette.Wheel[winningBin.Number + 2]);
-            corner.Add(roulette.Wheel[winningBin.Number + 3]);
+            corner.Add(roulette.Table[winningBin.Number + 2]);
+            corner.Add(roulette.Table[winningBin.Number + 3]);
 
             return corner;
         }
@@ -131,9 +131,9 @@ namespace Roulette.Models
         {
             var corner = new List<Bin>();
 
-            corner.Add(roulette.Wheel[winningBin.Number - 4]);
-            corner.Add(roulette.Wheel[winningBin.Number - 3]);
-            corner.Add(roulette.Wheel[winningBin.Number - 1]);
+            corner.Add(roulette.Table[winningBin.Number - 4]);
+            corner.Add(roulette.Table[winningBin.Number - 3]);
+            corner.Add(roulette.Table[winningBin.Number - 1]);
             corner.Add(winningBin);
 
             return corner;

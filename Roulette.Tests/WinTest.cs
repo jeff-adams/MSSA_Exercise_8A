@@ -15,7 +15,10 @@ namespace Roulette.Tests
             var win = new Win(roulette);
             var actual = win.Split(winningBin);
 
-            Assert.Equal(expected, actual);
+            for (int i = 0; i < actual.Count; i++)
+            {
+                Assert.Equal(actual[i].Number, expected[i].Number);   
+            }
         }
 
         public static IEnumerable<object[]> SplitTestData
@@ -29,10 +32,48 @@ namespace Roulette.Tests
                         new Bin(1),
                         new List<Bin>
                         {
-                            new Bin(2),
                             new Bin(4),
+                            new Bin(2),
                         }            
                     },
+                    new object[]
+                    {
+                        new Bin(3),
+                        new List<Bin>
+                        {
+                            new Bin(6),
+                            new Bin(2),
+                        }
+                    },
+                    new object[]
+                    {
+                        new Bin(34),
+                        new List<Bin>
+                        {
+                            new Bin(31),
+                            new Bin(35),
+                        }
+                    },
+                    new object[]
+                    {
+                        new Bin(36),
+                        new List<Bin>
+                        {
+                            new Bin(33),
+                            new Bin(35),
+                        }
+                    },
+                    new object[]
+                    {
+                        new Bin(14),
+                        new List<Bin>
+                        {
+                            new Bin(11),
+                            new Bin(17),
+                            new Bin(13),
+                            new Bin(15),
+                        }
+                    }
                 };
             }
         }

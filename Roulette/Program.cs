@@ -6,7 +6,10 @@ namespace Roulette
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Let's Play Roulette!");
+            Console.WriteLine("=====================\n");
+
+            new Play().Run();
         }
     }
 }
