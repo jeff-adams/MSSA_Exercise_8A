@@ -7,6 +7,9 @@ namespace Roulette
 {
     class Play
     {
+        private int x;
+        private int y;
+
         public void Run()
         {
             var croupier = new Croupier();
@@ -18,23 +21,28 @@ namespace Roulette
                 Bin winningBin = croupier.SpinRouletteWheel();
 
                 Console.Clear();
+                Console.CursorVisible = false;
+
                 PrintTable();
+
                 results = FormatWinningBids(winningBin, croupier);
+                PrintResults(results);
 
-                
-                
-                Console.WriteLine($"Single: {winningBin}");
-                Console.WriteLine($"Color: {winningBin.Color}");
-                Console.WriteLine($"Even/Odd: {evenodd}");
-                Console.WriteLine($"Low/High: {lowhigh}");
-                Console.WriteLine($"Dozen: {ListOfBinsToString(croupier.WinningDozen)}");
-                Console.WriteLine($"Column: {ListOfBinsToString(croupier.WinningColumn)}");
-                Console.WriteLine($"Street: {ListOfBinsToString(croupier.WinningStreet)}");
-                Console.WriteLine($"Double Streets: {ListOfBinsToString(croupier.WinningDoubleStreet)}");
-                Console.WriteLine($"Split: {ListOfBinsToString(croupier.WinningSplits)}");
-                Console.WriteLine($"Corners: {ListOfBinsToString(croupier.WinningCorner)}");
+                var input = Console.ReadKey(true);
+                isPlaying = !(input.Key == ConsoleKey.Q);
+            }
+        }
 
-                Console.ReadKey(true);
+        private void PrintResults(string[] results)
+        {
+            var offsetX = 21;
+            var offsetY = 3;
+            var incrementY = 2;
+
+            for (int i = 0; i < results.Length; i++)
+            {
+                Console.SetCursorPosition(x + offsetX, y + offsetY + (incrementY * i));
+                Console.Write(results[i]);
             }
         }
 
@@ -42,7 +50,7 @@ namespace Roulette
         {
             var results = new string[11];
             results[0] = winningBin.ToString();
-            results[10] = "stats";
+            results[10] = croupier.Stats;
 
             if(winningBin.Number == 0 || winningBin.Number == 37)
             {
@@ -65,7 +73,6 @@ namespace Roulette
                 results[7] = ListOfBinsToString(croupier.WinningDoubleStreet);
                 results[8] = ListOfBinsToString(croupier.WinningSplits);
                 results[9] = ListOfBinsToString(croupier.WinningCorner);
-                results[10] = croupier.Stats;
             }
 
             return results;
@@ -75,7 +82,6 @@ namespace Roulette
         {
             var table = new string[]
             {
-                "                                                                       ",
                 "   ╭─────────────────────────────────────────────────────────────╮     ",
                 "   │                     Let's Play Roulette!                    │     ",
                 "   ├─────────────────────────────────────────────────────────────┤     ",
@@ -104,9 +110,14 @@ namespace Roulette
                 "                       Press ENTER to play again                       ",
             };
 
-            foreach (var line in table)
+            x = Console.WindowWidth / 2 - table[0].Length / 2;
+            y = Console.WindowHeight / 2 - table.Length / 2;
+
+
+            for(int i = 0; i < table.Length; i++)
             {
-                Console.WriteLine(line);
+                Console.SetCursorPosition(x, y + i);
+                Console.WriteLine(table[i]);
             }
         }
 

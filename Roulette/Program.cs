@@ -6,10 +6,12 @@ namespace Roulette
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Let's Play Roulette!");
-            Console.WriteLine("=====================\n");
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Console.CursorVisible = false;
 
             new Play().Run();
+
+            Console.CursorVisible = true;
         }
     }
 }

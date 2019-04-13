@@ -35,17 +35,41 @@ namespace Roulette.Models
         public Bin SpinRouletteWheel()
         {
             winningBin = roulette.Wheel[new Random().Next(0,38)];
+            AddToStatistics();
+
             return winningBin;
         }
 
-        public Bin SpinRouletteWheel(int seed)
+        private KeyValuePair<int, int> MostRolledBin()
         {
-            winningBin = roulette.Wheel[new Random(seed).Next(0,38)];
-            return winningBin;
+            var mostBin = rolledBins.First();
+
+            foreach (var bin in rolledBins)
+            {
+              if (bin.Value > mostBin.Value) 
+              {
+                  mostBin = bin;
+              }
+            }
+
+            return mostBin;
         }
 
         private void AddToStatistics()
         {
+            totalSpins++;
+            if (winningBin.Color != ConsoleColor.Green)
+            {
+                if(winningBin.Color == ConsoleColor.Red)
+                {
+                    totalRed++;
+                }
+                else
+                {
+                    totalBlack++;
+                }
+            }
+
             if (rolledBins.ContainsKey(winningBin.Number))
             {
                 rolledBins[winningBin.Number]++;
@@ -55,11 +79,9 @@ namespace Roulette.Models
                 rolledBins.Add(winningBin.Number, 1);
             }
 
-            var sb = new StringBuilder();
-            sb.Append("Total spins calculated ")
-              .Append($"{totalSpins} | ")
-              .Append("Bin that has appeared the most ")
-              .Append("");//search dictionary for largest value
+            KeyValuePair<int, int> mostRolledBin = MostRolledBin();
+
+            Stats = $"{totalSpins} spins, {mostRolledBin.Key} has hit {mostRolledBin.Value} times, Red {(double)totalRed / totalSpins:P,0}, Black {(double)totalBlack / totalSpins:P,0}";
         }
     }
 }
