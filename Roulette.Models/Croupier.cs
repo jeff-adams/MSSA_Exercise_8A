@@ -81,7 +81,7 @@ namespace Roulette.Models
 
             KeyValuePair<int, int> mostRolledBin = MostRolledBin();
 
-            Stats = $"{totalSpins} spins, {mostRolledBin.Key} has hit {mostRolledBin.Value} times, Red {(double)totalRed / totalSpins:P,0}, Black {(double)totalBlack / totalSpins:P,0}";
+            Stats = $"{mostRolledBin.Key} has hit {mostRolledBin.Value} times / {totalSpins} spins, Red {(double)totalRed / totalSpins:P0}, Black {(double)totalBlack / totalSpins:P0}";
         }
     }
 }
